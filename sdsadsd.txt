@@ -1,0 +1,16 @@
+import React from 'react'
+import { MdOutlineEmail, MdOutlineSupportAgent } from 'react-icons/md'
+import { useQuery } from 'react-query';
+import MarketingTopbar from '../../../components/marketing/MarketingTopbar'
+
+const AboutPage = () => {
+  const fetchUsers = async () => {
+    const res = await fetch("https://backend.mirotaklik.id/api/marketing/about", {
+      headers: {
+        Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYmFja2VuZC5taXJvdGFrbGlrLmlkL2FwaS9sb2dpbiIsImlhdCI6MTY3NTkzMDAxMCwiZXhwIjoxNjc1OTMzNjEwLCJuYmYiOjE2NzU5MzAwMTAsImp0aSI6IklVTlVnQ3FBRVFOVks0RzciLCJzdWIiOiIxMCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._x_buVSakH99rBlXWpxwemlGCMrHRI1GvDUmV7zO13k`,
+      }});
+    return res.json();
+  };
+  const { data, status } = useQuery("about", fetchUsers);
+  console.log(data) 
+  
